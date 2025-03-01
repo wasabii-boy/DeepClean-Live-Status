@@ -100,12 +100,16 @@ def check_terminal_capabilities():
     logger.info(f"Terminal size: {terminal_width}x{terminal_height}")
     logger.info(f"Is running in a terminal: {is_terminal}")
 
-    # Check for potential issues
-    if terminal_width < 80 or terminal_height < 24:
-        print("WARNING: Terminal size is too small. Minimum recommended size: 80x24")
+    # Check for potential issues but be more flexible
+    min_width = 80
+    min_height = 20  # Reduced from 24 to be more accommodating
+    
+    if terminal_width < min_width or terminal_height < min_height:
+        print(f"WARNING: Terminal size is smaller than ideal. Minimum recommended size: {min_width}x{min_height}")
         print(f"Current terminal size: {terminal_width}x{terminal_height}")
-        logger.warning(f"Terminal size too small: {terminal_width}x{terminal_height}")
-
+        logger.warning(f"Terminal size below recommended: {terminal_width}x{terminal_height}")
+        # But don't treat this as a fatal error - UI will adapt
+    
     if term.lower() in ["dumb", "unknown"]:
         print("WARNING: Limited terminal capabilities detected.")
         print("The rich interface may not display correctly.")
@@ -593,7 +597,17 @@ class DeepClean:
         # Calculate how much of the progress bar to fill
         filled_char = "█"
         empty_char = "░"
-        bar_width = 50  # Wider progress bar for better visualization
+        
+        # Get terminal width to adapt progress bar size
+        import shutil
+        terminal_width, _ = shutil.get_terminal_size()
+        
+        # Adapt bar width to terminal width
+        # On smaller terminals, use a narrower bar
+        if terminal_width < 100:
+            bar_width = 30  # Narrower for small terminals
+        else:
+            bar_width = 50  # Default wider bar for normal terminals
 
         # Add pulsing effect when paused
         if self.is_paused:
@@ -1382,14 +1396,64 @@ class DeepClean:
 
                 # Main interface loop
                 try:
-                    while not self.should_exit and (
-                        cleaning_thread.is_alive() or not self.is_cleaning
-                    ):
-                        # Update layout
-                        self.update_layout()
-
+                    # Set up keyboard handling
+                    import tty
+                    import termios
+                    import select
+                    
+                    # Save terminal settings
+                    fd = sys.stdin.fileno()
+                    old_settings = termios.tcgetattr(fd)
+                    try:
+                        # Set terminal to raw mode
+                        tty.setraw(fd)
+                        
+                        while not self.should_exit and (
+                            cleaning_thread.is_alive() or not self.is_cleaning
+                        ):
+                            # Update layout
+                            self.update_layout()
+                            
+                            # Check for keyboard input
+                            if select.select([sys.stdin], [], [], 0)[0]:
+                                key = sys.stdin.read(1)
+                                # Process key press
+                                if key.lower() == 'q':  # Quit
+                                    self.should_exit = True
+                                    self.add_operation("User requested to exit")
+                                elif key.lower() == 'p':  # Pause/Resume
+                                    if self.is_paused:
+                                        self.processing_event.set()
+                                        self.is_paused = False
+                                        self.add_operation("Cleaning resumed by user")
+                                    else:
+                                        self.processing_event.clear()
+                                        self.is_paused = True
+                                        self.add_operation("Cleaning paused by user")
+                                elif key.lower() == 's':  # Selector
+                                    # Can't show selector during cleaning, just log
+                                    self.add_operation("Selector requested (not available during cleaning)")
+                                elif key.lower() == 'r':  # Generate report
+                                    self.add_operation("Generating report...")
+                                    self.generate_report()
+                                elif key.lower() == 'h':  # Safety guide
+                                    if SAFETY_GUIDE_AVAILABLE:
+                                        # Temporarily suspend Live display to show safety guide
+                                        live.suspend()
+                                        try:
+                                            safety_guide.show_safety_guide()
+                                            self.add_operation("Safety guide displayed")
+                                        finally:
+                                            live.resume()
+                                    else:
+                                        self.add_operation("Safety guide not available")
+                        
                         # Small delay
                         time.sleep(0.2)
+                        
+                    finally:
+                        # Restore terminal settings
+                        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
                     # Make sure to update one last time
                     self.update_layout()
