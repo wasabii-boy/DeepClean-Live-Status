@@ -1,0 +1,68 @@
+================================================================================
+DeepClean Report - 2025-03-01 01:48:40
+================================================================================
+
+STATISTICS
+--------------------------------------------------------------------------------
+analyzed_files: 0
+analyzed_dirs: 0
+cleaned_files: 0
+cleaned_dirs: 0
+cleaned_size: 0.00 B
+protected_files: 5387
+skipped_recent_files: 5271
+errors: 0
+duration: 1.0s
+
+OPERATIONS LOG
+--------------------------------------------------------------------------------
+[01:48:39] 🚀 DeepClean started
+[01:48:39] [bold yellow]⚠️ SAFETY NOTICE[/bold yellow]: Press H to view detailed safety guidelines
+[01:48:39] [bold yellow]⚠️ SAFETY NOTICE[/bold yellow]: Consider using dry-run mode for safety (--dry-run)
+[01:48:39] [bold green]ℹ️ SIMULATION MODE[/bold green]: No files will be deleted
+[01:48:39] Starting cleaning process...
+[01:48:39] Analyzing paths to estimate total size...
+[01:48:39] Progress: 7% - Completed path: ~/Library/Caches/
+[01:48:39] Progress: 14% - Completed path: ~/.cache/
+[01:48:39] Progress: 21% - Completed path: /tmp/
+[01:48:39] Progress: 28% - Completed path: /var/tmp/
+[01:48:39] Progress: 35% - Completed path: ~/.npm/_cacache
+[01:48:39] Progress: 42% - Completed path: ~/.yarn/cache
+[01:48:39] Progress: 50% - Completed path: ~/.gradle/caches
+[01:48:39] Progress: 57% - Completed path: ~/.nuget/packages
+[01:48:39] Progress: 64% - Completed path: ~/.pip/cache
+[01:48:39] Progress: 71% - Completed path: ~/.cargo/registry/cache
+[01:48:39] Progress: 78% - Completed path: ~/Library/Logs/
+[01:48:39] Progress: 85% - Completed path: /var/log/
+[01:48:39] Progress: 92% - Completed temporary directory
+[01:48:40] Progress: 100% - Cleaning completed
+
+PATHS CLEANED
+--------------------------------------------------------------------------------
+Category: cache
+  - ~/Library/Caches/
+  - ~/.cache/
+Category: temp
+  - /tmp/
+  - /var/tmp/
+Category: package_managers
+  - ~/.npm/_cacache
+  - ~/.yarn/cache
+  - ~/.gradle/caches
+  - ~/.nuget/packages
+  - ~/.pip/cache
+  - ~/.cargo/registry/cache
+Category: logs
+  - ~/Library/Logs/
+  - /var/log/
+
+SYSTEM INFORMATION
+--------------------------------------------------------------------------------
+Python version: 3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)]
+Platform: darwin
+Total memory: 16.00 GB
+Total disk: 931.55 GB
+
+================================================================================
+End of report
+================================================================================
