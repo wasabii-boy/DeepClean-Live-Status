@@ -1,0 +1,163 @@
+{
+    "paths": {
+        "system_cache": [
+            "~/Library/Caches/",
+            "/Library/Caches/",
+            "~/.cache/",
+            "/var/cache/"
+        ],
+        "temp": [
+            "/tmp/",
+            "/var/tmp/",
+            "~/Library/Application Support/CrashReporter/",
+            "~/Library/Autosave Information/",
+            "~/Library/Saved Application State/"
+        ],
+        "logs": [
+            "~/Library/Logs/",
+            "/var/log/",
+            "~/Library/Application Support/*/Logs/",
+            "~/Library/Containers/*/Data/Library/Logs/"
+        ],
+        "package_managers": [
+            "~/.npm/_cacache",
+            "~/.yarn/cache",
+            "~/.pnpm-store/",
+            "~/.pip/cache/",
+            "~/.cache/pip/",
+            "~/.pyenv/cache/", 
+            "~/.gem/cache/",
+            "~/.bundle/cache/",
+            "~/.gradle/caches",
+            "~/.m2/repository/",
+            "~/.ivy2/cache/",
+            "~/.cargo/registry/cache",
+            "~/.rustup/downloads/",
+            "~/.composer/cache/",
+            "~/.nuget/packages",
+            "~/.cocoapods/repos/",
+            "~/Library/Caches/CocoaPods"
+        ],
+        "browsers": [
+            "~/Library/Caches/Google/Chrome/",
+            "~/.cache/google-chrome/",
+            "~/Library/Application Support/Google/Chrome/Default/Cache/",
+            "~/.config/google-chrome/Default/Cache/",
+            "~/Library/Caches/Firefox/",
+            "~/.cache/mozilla/firefox/",
+            "~/Library/Application Support/Firefox/Profiles/*/cache2/",
+            "~/.mozilla/firefox/*/cache2/",
+            "~/Library/Caches/com.apple.Safari/",
+            "~/Library/Safari/LocalStorage/",
+            "~/Library/WebKit/com.apple.Safari/",
+            "~/Library/Caches/Microsoft Edge/",
+            "~/.cache/microsoft-edge/",
+            "~/Library/Application Support/BraveSoftware/Brave-Browser/Default/Cache/",
+            "~/Library/Application Support/Brave Software/Brave-Browser/Default/Cache/"
+        ],
+        "editors_and_ides": [
+            "~/.vscode/caches/",
+            "~/.config/Code/Cache/",
+            "~/Library/Application Support/Code/Cache/",
+            "~/.cache/JetBrains/",
+            "~/Library/Caches/JetBrains/",
+            "~/.IntelliJIdea*/system/caches/",
+            "~/.PyCharm*/system/caches/",
+            "~/.CLion*/system/caches/",
+            "~/.WebStorm*/system/caches/",
+            "~/Library/Developer/Xcode/DerivedData/",
+            "~/Library/Developer/Xcode/Archives/",
+            "~/Library/Developer/Xcode/iOS DeviceSupport/",
+            "~/Library/Developer/CoreSimulator/Caches/",
+            "~/Library/Caches/com.apple.dt.Xcode/"
+        ],
+        "apps": [
+            "~/Library/Application Support/Slack/Cache/",
+            "~/.config/Slack/Cache/",
+            "~/Library/Caches/com.spotify.client/",
+            "~/.cache/spotify/",
+            "~/Library/Application Support/discord/Cache/",
+            "~/.config/discord/Cache/",
+            "~/Library/Caches/com.apple.iTunes/",
+            "~/Library/Caches/com.apple.Music/",
+            "~/Library/Caches/com.apple.iChat/",
+            "~/Library/Caches/com.apple.Messages/",
+            "~/Library/Containers/com.apple.mail/Data/Library/Caches/",
+            "~/Library/Mail/",
+            "~/Library/Containers/com.apple.QuickTimePlayerX/Data/Library/Caches/",
+            "~/Library/Application Support/Adobe/Common/Media Cache Files/",
+            "~/Library/Application Support/Adobe/Common/Media Cache/",
+            "~/Library/Application Support/zoom.us/",
+            "~/Library/Caches/us.zoom.xos/"
+        ],
+        "docker": [
+            "~/Library/Containers/com.docker.docker/Data/vms/",
+            "~/.kube/cache/",
+            "~/.docker/buildx/cache/",
+            "~/.minikube/cache/",
+            "~/Library/Caches/com.docker.docker/"
+        ],
+        "system_junk": [
+            "~/Library/Application Support/CrashReporter/",
+            "~/Library/Application Support/DiagnosticReports/",
+            "~/Library/LanguageModeling/",
+            "~/Library/Spelling/",
+            "~/Library/Caches/com.apple.appstore/",
+            "~/Library/Caches/com.apple.appstoreagent/",
+            "~/Library/Caches/com.apple.cloudd/",
+            "~/Library/Caches/com.apple.iCloudHelper/",
+            "~/Library/Caches/com.apple.imfoundation.IMRemoteURLConnectionAgent/",
+            "~/Library/Caches/FaceTime/",
+            "~/Library/Caches/com.apple.touristd/",
+            "~/Library/Caches/com.apple.preferencepanes.searchmanager/",
+            "~/Library/Caches/com.apple.preferencepanes.usercache/",
+            "~/Library/Caches/CloudKit/",
+            "~/Library/Caches/com.apple.bird/",
+            "~/Library/Caches/com.apple.parsecd/"
+        ]
+    },
+    "protected": [
+        "**/.ssh/**",
+        "**/.gnupg/**",
+        "**/Documents/**",
+        "**/Pictures/**",
+        "**/Music/**",
+        "**/Videos/**",
+        "**/*.py",
+        "**/*.js",
+        "**/*.ts",
+        "**/*.rb",
+        "**/*.php",
+        "**/*.java",
+        "**/*.go",
+        "**/*.rs",
+        "**/*.c",
+        "**/*.cpp",
+        "**/*.h",
+        "**/*.swift",
+        "**/*.m",
+        "**/*.cs"
+    ],
+    "options": {
+        "min_file_age_days": 7,
+        "max_size_per_operation_mb": 1000,
+        "skip_confirmation": false,
+        "backup_before_delete": false,
+        "keyboard_controls": {
+            "enabled": true,
+            "use_fallback": "auto",
+            "exit_key": "q",
+            "pause_key": "p",
+            "selector_key": "s",
+            "report_key": "r"
+        },
+        "safety": {
+            "show_warnings": true,
+            "backup_important_folders": false,
+            "prompt_for_risky_operations": true,
+            "detect_running_applications": true,
+            "dry_run_first": true,
+            "skip_system_folders": true
+        }
+    }
+} 
